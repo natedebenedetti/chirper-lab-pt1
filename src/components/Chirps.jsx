@@ -1,4 +1,5 @@
 import React from 'react';
+import ChirpCards from './ChirpCards';
 
 class Chirps extends React.Component {
     constructor(props) {
@@ -17,17 +18,17 @@ class Chirps extends React.Component {
 
     handleClick(e) {
         e.preventDefault();
-        
+
         let chirpArray = this.state.addedChirps;
         let newChirp = this.state.chirp;
-
+        
         chirpArray.unshift(newChirp);
 
         this.setState({
             chirp: "",
             addedChirps: chirpArray
         });
-        
+
     }
 
     render() {
@@ -56,9 +57,7 @@ class Chirps extends React.Component {
                     <div className="col-md-12">
                         <ul className="list-group p-4 my-4 border border-danger rounded">
                             {this.state.addedChirps.map((message, index) => {
-                                return (
-                                    <li key={index} className="list-group item text-danger font-weight-bold border border-dark p-2">{message}</li>
-                                );
+                                return <ChirpCards message={message} key={index} />
                             })}
                         </ul>
                     </div>
