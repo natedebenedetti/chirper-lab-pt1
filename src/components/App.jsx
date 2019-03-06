@@ -1,17 +1,12 @@
 import React from 'react';
-import Jumbo from './Jumbotron';
+import Jumbotron from './Jumbotron';
 import Chirps from './Chirps';
 
 const App = () => {
     return (
         <div className="container">
-            <div className="row">
-                <div className="col-md-12">
-                    <Jumbo />
-                </div>
-            </div>
+            <Jumbotron />
             <Chirps />
-            
             
         </div>
     );
