@@ -1,5 +1,5 @@
 import React from 'react';
-import ChirpCards from './ChirpCards';
+import ChirpBox from './ChirpBox';
 
 class Chirps extends React.Component {
     constructor(props) {
@@ -20,9 +20,13 @@ class Chirps extends React.Component {
         e.preventDefault();
 
         let chirpArray = this.state.addedChirps;
-        let newChirp = this.state.chirp;
+        let newChirp = {
+            text: this.state.chirp,
+            name: "Whoever I am",
+            timeStamp: new Date().toString()
+        };
         
-        chirpArray.unshift(newChirp);
+        chirpArray.push(newChirp);
 
         this.setState({
             chirp: "",
@@ -55,9 +59,25 @@ class Chirps extends React.Component {
                 </div>
                 <div className="row">
                     <div className="col-md-12">
+                        <h4 className="my-4 text-warning">CHIRPS:</h4>
                         <ul className="list-group p-4 my-4 border border-danger rounded">
-                            {this.state.addedChirps.map((message, index) => {
-                                return <ChirpCards message={message} key={index} />
+                        <li className="list-group item text-danger border border-danger p-2 m-2">
+                        <span className="my-2">{new Date().toString()}</span> 
+                        <span className="my-2 font-weight-bold text-info">Some random person chirped:</span> 
+                        <span className="text-white">Yo!</span></li>
+
+                        <li className="list-group item text-danger border border-danger p-2 m-2">
+                        <span className="my-2">{new Date().toString()}</span> 
+                        <span className="my-2 font-weight-bold text-success">Someone else chirped:</span> 
+                        <span className="text-white">Hey!!!</span></li>
+
+                        <li className="list-group item text-danger border border-danger p-2 m-2">
+                        <span className="my-2">{new Date().toString()}</span> 
+                        <span className="my-2 font-weight-bold text-primary">That other person chirped:</span> 
+                        <span className="text-white">Whassup!!!!!</span></li>
+
+                            {this.state.addedChirps.map((newChirp, index) => {
+                                return <ChirpBox newChirp={newChirp} key={index} />
                             })}
                         </ul>
                     </div>
